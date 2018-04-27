@@ -233,7 +233,7 @@ var TextInput = /** @class */ (function (_super) {
             }
         }
         return (React.createElement("div", { className: currentClass },
-            React.createElement("input", { placeholder: this.state.placeholder, value: this.props.value, onChange: this.props.onChange, onClick: this.props.onClick, onBlur: this.props.blurred, onFocus: this.props.onFocus, type: this.props.type }),
+            React.createElement("input", { placeholder: this.state.placeholder, value: this.props.value, onChange: this.props.onChange, onClick: this.props.onClick, onBlur: this.props.blurred, onFocus: this.props.onFocus, type: this.props.type, className: 'big-form-item' }),
             password,
             eye));
     };

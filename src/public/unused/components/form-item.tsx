@@ -313,6 +313,7 @@ class TextInput extends React.Component {
           onBlur = {this.props.blurred}
           onFocus = {this.props.onFocus}
           type = {this.props.type}
+          className = 'big-form-item'
           />
         {password}
         {eye}

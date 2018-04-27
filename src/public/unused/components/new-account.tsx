@@ -8,7 +8,6 @@ class NewAccount extends React.Component {
   render() {
     return (
       <div className="flex column userWrapper">
-        <h3 className="formTitle">create account</h3>
           <FormWrapper
             buttonText = 'create new account'
             url = 'http://localhost:8000/accounts'
@@ -37,12 +36,6 @@ class NewAccount extends React.Component {
               newPass = {true}
               />
           </FormWrapper>
-          <FormWrapper
-            buttonText = 'login'
-            method = 'get'
-            url = 'http://localhost:8000/'
-            noValidation = {true}
-            />
         </div>
     )
   }

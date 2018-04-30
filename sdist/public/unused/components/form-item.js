@@ -222,18 +222,25 @@ var TextInput = /** @class */ (function (_super) {
         if (this.props.submitted) {
             currentClass = 'formSuccess inputWrapper';
         }
-        if (this.props.type === 'password') {
-            if (this.state.showPass) {
-                eye = React.createElement("img", { src: '/icons/eye-no.svg', className: 'icon fadeIn', onClick: this.handleClick });
-                password = React.createElement("p", { className: 'showPass marginPaddingFix' }, this.props.value);
-            }
-            else {
-                eye = React.createElement("img", { src: '/icons/black/eye.svg', className: 'icon fadeIn', onClick: this.handleClick });
-                password = React.createElement("p", { className: 'hidePass marginPaddingFix' });
-            }
-        }
+        // if (this.props.type === 'password') {
+        //   if (this.state.showPass) {
+        //     eye = <img
+        //       src = '/icons/eye-no.svg'
+        //       className = 'icon fadeIn'
+        //       onClick = {this.handleClick}
+        //       />
+        //     password = <p className = 'showPass marginPaddingFix'>{this.props.value}</p>
+        //   } else {
+        //     eye = <img
+        //       src = '/icons/black/eye.svg'
+        //       className = 'icon fadeIn'
+        //       onClick = {this.handleClick}
+        //       />
+        //     password = <p className = 'hidePass marginPaddingFix'></p>
+        //   }
+        // }
         return (React.createElement("div", { className: currentClass },
-            React.createElement("input", { placeholder: this.state.placeholder, value: this.props.value, onChange: this.props.onChange, onClick: this.props.onClick, onBlur: this.props.blurred, onFocus: this.props.onFocus, type: this.props.type, className: 'big-form-item' }),
+            React.createElement("input", { placeholder: this.state.placeholder, value: this.props.value, onChange: this.props.onChange, onClick: this.props.onClick, onBlur: this.props.blurred, onFocus: this.props.onFocus, type: this.props.type, className: 'big-form-item website-text-form' }),
             password,
             eye));
     };

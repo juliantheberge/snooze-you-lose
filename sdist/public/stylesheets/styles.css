@@ -151,6 +151,10 @@ form {
   font-weight: 600;
   width: 100%; }
 
+@media all and (max-width: 750px) {
+  .big-form-item {
+    font-size: 6vw; } }
+
 input {
   border: none;
   background-color: transparent; }
@@ -228,7 +232,7 @@ button:focus {
 @media all and (max-width: 750px) {
   .full-page {
     width: 100%;
-    padding: 20px;
+    padding-top: 20px;
     justify-content: flex-start; } }
 
 .long-page {
@@ -879,6 +883,13 @@ button:focus {
   min-width: 300px;
   width: 100%; }
 
+.userWrapper {
+  max-width: 100%; }
+
+@media all and (max-width: 750px) {
+  .userWrapper {
+    width: 100%; } }
+
 .formWrapper {
   display: flex;
   flex-direction: column;
@@ -887,10 +898,9 @@ button:focus {
   display: flex;
   flex-direction: column; }
   .formWrapper form {
-    margin-top: 10px;
-    width: 40vw;
-    max-width: 600px;
-    min-width: 300px; }
+    width: 100%;
+    max-height: 60vh;
+    overflow: scroll; }
     .formWrapper form .textFormWrapper h5 {
       margin-top: 10px;
       margin-bottom: 10px;
@@ -899,6 +909,7 @@ button:focus {
       font-weight: 400; }
     .formWrapper form .textFormWrapper div {
       display: flex;
+      align-items: center;
       width: 100%; }
       .formWrapper form .textFormWrapper div input {
         flex-grow: 1;
@@ -916,6 +927,15 @@ button:focus {
       margin-top: 10px;
       margin-bottom: 10px; }
 
+@media all and (max-width: 750px) {
+  .formWrapper form .textFormWrapper h5 {
+    margin: 0;
+    margin-left: 35px; } }
+
+.website-text-form {
+  margin: 0;
+  padding: 0; }
+
 .formIcon {
   width: 30px;
   height: 30px;
@@ -932,6 +952,10 @@ button:focus {
   width: 30px;
   height: 30px;
   transition: 300ms; }
+
+@media all and (max-width: 750px) {
+  .formIcon {
+    margin-right: 5px; } }
 
 .disabled-icon {
   background-color: #756F6F;
@@ -1131,6 +1155,13 @@ button:focus {
   justify-content: stretch;
   margin-left: 55px; }
 
+#passwordQualityRightFix {
+  align-items: flex-start; }
+
+@media all and (max-width: 750px) {
+  .passwordQualityWrapper {
+    margin-left: 35px; } }
+
 .eye-icon {
   position: relative;
   left: 90%;
@@ -1138,7 +1169,6 @@ button:focus {
 
 .hidePass {
   height: 30px;
-  border-bottom: 2px solid black;
   width: 0;
   transition: 300ms;
   display: flex;
@@ -1148,7 +1178,6 @@ button:focus {
 
 .showPass {
   height: 30px;
-  border-bottom: 2px solid black;
   transition: 300ms;
   width: 100px;
   display: flex;

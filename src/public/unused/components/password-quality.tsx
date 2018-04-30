@@ -30,7 +30,7 @@ class PasswordQuality extends React.Component {
     if (this.props.newPass) {
       return (
         <div>
-          <div className = 'passwordQualityWrapper'>
+          <div className = 'passwordQualityWrapper' id = 'passwordQualityRightFix'>
             <div style = {passIndicator}></div>
             {entropyReport}
           </div>

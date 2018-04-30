@@ -45,7 +45,7 @@ var PasswordQuality = /** @class */ (function (_super) {
         }
         if (this.props.newPass) {
             return (React.createElement("div", null,
-                React.createElement("div", { className: 'passwordQualityWrapper' },
+                React.createElement("div", { className: 'passwordQualityWrapper', id: 'passwordQualityRightFix' },
                     React.createElement("div", { style: passIndicator }),
                     entropyReport)));
         }

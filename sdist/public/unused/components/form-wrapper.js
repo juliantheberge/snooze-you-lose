@@ -64,12 +64,11 @@ var FormWrapper = /** @class */ (function (_super) {
     FormWrapper.prototype.handleSubmit = function (event) {
         var _this = this;
         console.log('HANDLE SUBMIT CALLED:', this.state.data);
-        event.stopPropagation();
         event.preventDefault();
         if (this.state.submitable && this.props.method === 'post') {
-            var formData = JSON.stringify(this.state.data);
-            fetch(this.props.url, {
-                body: formData,
+            console.log('state submitted true and this props method is post');
+            return fetch(this.props.url, {
+                body: JSON.stringify(this.state.data),
                 method: "post",
                 credentials: "same-origin",
                 headers: {
@@ -79,9 +78,9 @@ var FormWrapper = /** @class */ (function (_super) {
             })
                 .then(function (res) { return res.json(); })
                 .then(function (body) { return console.log(body); })
-                .then(this.setState({
+                .then(function () { return _this.setState({
                 submitted: true
-            }))
+            }); })
                 .catch(function (error) {
                 console.log(error);
                 _this.setState({

@@ -15,7 +15,7 @@ class FormWrapper extends React.Component {
     method:string;
     buttonText:string;
     noValidation?:boolean;
-    children:Element;
+    children?:FormItem;
   }
 
 
@@ -75,12 +75,11 @@ class FormWrapper extends React.Component {
 
   handleSubmit(event) {
     console.log('HANDLE SUBMIT CALLED:', this.state.data)
-    event.stopPropagation()
     event.preventDefault()
     if (this.state.submitable && this.props.method === 'post') {
-      let formData = JSON.stringify(this.state.data);
-      fetch(this.props.url, {
-          body:formData,
+      console.log('state submitted true and this props method is post')
+      return fetch(this.props.url, {
+          body: JSON.stringify(this.state.data),
           method: "post",
           credentials: "same-origin",
           headers: {
@@ -90,7 +89,7 @@ class FormWrapper extends React.Component {
         })
         .then(res => res.json())
         .then(body => console.log(body))
-        .then(this.setState({
+        .then(() => this.setState({
             submitted:true
           })
         )

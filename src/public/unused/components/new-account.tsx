@@ -10,27 +10,27 @@ class NewAccount extends React.Component {
       <div className="flex column userWrapper">
           <FormWrapper
             buttonText = 'create new account'
-            url = 'http://localhost:8000/accounts'
+            url = '/accounts/api'
             method = 'post'
             >
             <FormItem
               title = 'name'
-              placeholder = 'type in your username'
+              placeholder = 'name'
               imgSrc = {'/icons/black/user-fem.svg'}
               />
             <FormItem
               title = 'email'
-              placeholder = 'type in your email'
+              placeholder = 'email'
               imgSrc = {'/icons/black/mail.svg'}
               />
             <FormItem
               title = 'phone'
-              placeholder = 'type in your phone number'
+              placeholder = 'phone'
               imgSrc = {'/icons/black/phone.svg'}
               />
             <FormItem
               title = 'password'
-              placeholder = 'type in your password'
+              placeholder = 'password'
               imgSrc = {'/icons/black/key.svg'}
               type = 'password'
               newPass = {true}

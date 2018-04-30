@@ -253,6 +253,13 @@ form {
   font-size:36px;
   font-weight:600;
   width:100%
+
+}
+
+@media all and (max-width:750px) {
+  .big-form-item {
+    font-size:6vw;
+  }
 }
 
 .formTitle {
@@ -357,7 +364,7 @@ button:focus {
 @media all and (max-width:750px) {
   .full-page {
     width:100%;
-    padding:20px;
+    padding-top:20px;
     justify-content: flex-start;
   }
 }
@@ -1203,6 +1210,15 @@ $mobile-menu-width:45px;
 
 
 // FORM ITEMS
+.userWrapper {
+  max-width:100%;
+}
+
+@media all and (max-width:750px) {
+  .userWrapper {
+    width:100%;
+  }
+}
 
 .formWrapper {
   @include centerColumn;
@@ -1210,7 +1226,9 @@ $mobile-menu-width:45px;
   flex-direction:column;
 
     form {
-      @include wrapper;
+      width:100%;
+      max-height:60vh;
+      overflow:scroll;
       .textFormWrapper {
         h5 {
           @include colMargin;
@@ -1220,6 +1238,7 @@ $mobile-menu-width:45px;
         }
         div {
           display:flex;
+          align-items: center;
           width:100%;
           input {
             flex-grow:1;
@@ -1246,6 +1265,26 @@ $mobile-menu-width:45px;
     }
 }
 
+@media all and (max-width:750px) {
+  .formWrapper {
+    form {
+      .textFormWrapper {
+        h5 {
+            margin:0;
+            margin-left:35px;
+          }
+      }
+    }
+  }
+}
+
+
+.website-text-form {
+  margin:0;
+  padding:0;
+}
+
+
 .formIcon {
   width:$icon-width;
   height:$icon-width;
@@ -1264,6 +1303,12 @@ $mobile-menu-width:45px;
   width:$icon-width;
   height:$icon-width;
   transition:300ms;
+}
+
+@media all and(max-width:750px) {
+  .formIcon {
+    margin-right:5px;
+  }
 }
 
 .disabled-icon {
@@ -1514,6 +1559,16 @@ $mobile-menu-width:45px;
   @include fullWidthColumn;
   margin-left:$icon-container-width;
 }
+#passwordQualityRightFix {
+  align-items: flex-start;
+}
+
+
+@media all and (max-width:750px) {
+  .passwordQualityWrapper {
+    margin-left:35px;
+  }
+}
 
 .eye-icon {
   position:relative;
@@ -1523,7 +1578,6 @@ $mobile-menu-width:45px;
 
 .hidePass {
   height:30px;
-  border-bottom:2px solid black;
   width:0;
   transition: 300ms;
   display:flex;
@@ -1534,7 +1588,6 @@ $mobile-menu-width:45px;
 
 .showPass {
   height:30px;
-  border-bottom:2px solid black;
   transition: 300ms;
   width:100px;
   display:flex;

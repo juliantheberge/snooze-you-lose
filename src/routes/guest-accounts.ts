@@ -9,15 +9,8 @@ accts.get('/new-account', (req, res) => res.render('new-account'));
 // this seems to do nothing
 
 accts.route('/accounts')
-  .post((req,res) => {
-    let inputs = {
-      email: req.body.email,
-      phone: req.body.phone,
-      password:req.body.password,
-      name:req.body.name,
-    };
-    
-    req.CreateAcctSvc = new CreateAcctSvc(req.querySvc, inputs, req.sessionID)
+  .post((req,res) => {  
+    req.CreateAcctSvc = new CreateAcctSvc(req.querySvc, req.body, req.sessionID)
     
     req.CreateAcctSvc.createAcct()
       .then((result)=> {
@@ -32,5 +25,22 @@ accts.route('/accounts')
       })
   })
 
+accts.route('/accounts/api')
+  .post((req, res) => {
+    req.CreateAcctSvc = new CreateAcctSvc(req.querySvc, req.body, req.sessionID)
 
+    req.CreateAcctSvc.createAcct()
+      .then((result) => {
+        res.json({status:"OK"});
+      })
+      .catch((err) => {
+        let stack = new Error().stack
+        console.log('error', err, 'stack', stack)
+        res.json({
+          status:"FAILED",
+          error:err,
+          stack:stack
+        })
+      })
+  })
 export default accts;

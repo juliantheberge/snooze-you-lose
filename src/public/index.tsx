@@ -1,6 +1,7 @@
 import App from './app'
-import { TestApp } from './test'
 import NewAccount from './unused/components/new-account';
+import Login from './unused/login'
+import { TestApp } from './test'
 import { AlarmClock } from './alarm-clock'
 import { SimpleClock } from './simple-clock'
 import * as wp from 'web-push';
@@ -160,4 +161,10 @@ function newAccount() {
     document.getElementById('newAccount'))
 }
 
-export { app, store, populate, test, alarmClock, newAccount };
+function login() {
+    return ReactDOM.render(
+        <Login />,
+    document.getElementById('login'));
+}
+
+export { app, store, populate, test, alarmClock, newAccount, login };

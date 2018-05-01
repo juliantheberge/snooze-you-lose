@@ -15,6 +15,7 @@ import pusher from './routes/push-notifications';
 import trans from './routes/user-trans'
 
 import alarmsAPI from './routes/user-alarms-api';
+import authAPI from './routes/guest-authorization-api';
 const index = express.Router();
 
 index.use('/', auth);
@@ -30,7 +31,9 @@ index.use('/app/accounts/:email/settings', settings);
 index.use('/app/accounts/:email/payment', payment);
 index.use('/app/accounts/:email/trans', trans);
 // REACT AND REDUX
+index.use('/', authAPI)
 index.use('/app/accounts/:email/alarms', alarmsAPI);
+
 
 // subscribe to push this is working poorly
 // PUSH NOTIFICATION TEST

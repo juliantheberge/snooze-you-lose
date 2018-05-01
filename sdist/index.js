@@ -14,6 +14,7 @@ var user_payment_1 = require("./routes/user-payment");
 var push_notifications_1 = require("./routes/push-notifications");
 var user_trans_1 = require("./routes/user-trans");
 var user_alarms_api_1 = require("./routes/user-alarms-api");
+var guest_authorization_api_1 = require("./routes/guest-authorization-api");
 var index = express.Router();
 index.use('/', guest_authorization_1.default);
 index.use('/', guest_accounts_1.default);
@@ -28,6 +29,7 @@ index.use('/app/accounts/:email/settings', user_settings_1.default);
 index.use('/app/accounts/:email/payment', user_payment_1.default);
 index.use('/app/accounts/:email/trans', user_trans_1.default);
 // REACT AND REDUX
+index.use('/', guest_authorization_api_1.default);
 index.use('/app/accounts/:email/alarms', user_alarms_api_1.default);
 // subscribe to push this is working poorly
 // PUSH NOTIFICATION TEST

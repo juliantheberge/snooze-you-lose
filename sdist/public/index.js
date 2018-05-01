@@ -11,8 +11,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var app_1 = require("./app");
-var test_1 = require("./test");
 var new_account_1 = require("./unused/components/new-account");
+var login_1 = require("./unused/login");
+var test_1 = require("./test");
 var simple_clock_1 = require("./simple-clock");
 var React = require("react");
 var ReactDOM = require("react-dom");
@@ -136,4 +137,8 @@ function newAccount() {
     ReactDOM.render(React.createElement(new_account_1.default, null), document.getElementById('newAccount'));
 }
 exports.newAccount = newAccount;
+function login() {
+    return ReactDOM.render(React.createElement(login_1.default, null), document.getElementById('login'));
+}
+exports.login = login;
 //# sourceMappingURL=index.js.map

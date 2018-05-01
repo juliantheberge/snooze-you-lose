@@ -1,33 +1,24 @@
-<div class='login-wrapper'>
-  <div class="flex column userWrapper">
-    <form class="" action="/authorized" method="post">
-      <div class = "generic-form">
-        <p class =>email</p>
-        <input name="email" class="big-form-item" type="text" placeholder="email" value="n@n.nn" />
+<div id = 'login'>
+  <div class='login-wrapper' >
+    <div class="flex column userWrapper" >
+      <form class="" action="/authorized" method="post">
+        <div class = "generic-form">
+          <p class =>email</p>
+          <input name="email" class="big-form-item" type="text" placeholder="email" value="n@n.nn" />
 
-        <p class =>password</p>
-        <input name="password" class="big-form-item" type="password" value="1234!@#$qwer" />
-        <p class="formErrorReport">{{dbError}}</p>
-      </div>
+          <p class =>password</p>
+          <input name="password" class="big-form-item" type="password" value="1234!@#$qwer" />
+          <p class="formErrorReport">{{dbError}}</p>
+        </div>
 
-      <button class="button dark-button" type="submit"> log in </button>
-      
-    </form>
+        <button class="button dark-button" type="submit"> log in </button>
+        
+      </form>
+    </div>
   </div>
-  {{!-- <div class="flex column">
-    <form action="/forgot-password" method="get">
-      <button class="button light-button" type="submit">forgot password</button>
-    </form>
-  </div> --}}
 </div>
-{{!-- <script>
-  let userData = {{{ userData }}};
-  console.log(userData)
-  window.userData = userData
-
-  let permission = "{{permission}}"
-  window.permission = permission;
-  console.log(permission)
+<script>
+  a.login()
 </script>
-<script src='./rollup/bundle.js'></script> --}}
+
 

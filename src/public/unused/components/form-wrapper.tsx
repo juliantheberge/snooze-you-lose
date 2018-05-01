@@ -1,6 +1,6 @@
 import Button from './button-generic'
 import * as React from 'react';
-//
+
 class FormWrapper extends React.Component {
   state:{
     errorMessage:string;
@@ -17,7 +17,6 @@ class FormWrapper extends React.Component {
     noValidation?:boolean;
     children?:FormItem;
   }
-
 
   formItems:any;
   testObj:any;
@@ -74,10 +73,8 @@ class FormWrapper extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log('HANDLE SUBMIT CALLED:', this.state.data)
     event.preventDefault()
     if (this.state.submitable && this.props.method === 'post') {
-      console.log('state submitted true and this props method is post')
       return fetch(this.props.url, {
           body: JSON.stringify(this.state.data),
           method: "post",
@@ -88,27 +85,53 @@ class FormWrapper extends React.Component {
           }
         })
         .then(res => res.json())
-        .then(body => console.log(body))
-        .then(() => this.setState({
+        .then(body => {
+          if (body.status === 'failed') {throw body.error}
+          if (typeof body.redirect === 'string') {window.location = body.redirect}
+          return null
+        })
+        .then(() => {
+          this.setState({
             submitted:true
           })
-        )
-        .catch((error) => {
-          console.log(error)
+          return null
+        })
+        .catch(err => {
           this.setState({
-            errorMessage:error,
+            errorMessage:err,
+            error:true,
             submitted:false,
-            submitable:false,
-            data:{}
+            submitable:false
           })
         })
-    } else if (this.state.submitable && this.props.method === 'get') { // this is not in use
+    } else if (this.state.submitable && this.props.method === 'get') {
       fetch(this.props.url, {
           method: "get",
           headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
           }
+        })
+        .then(res => res.json())
+        .then(body => {
+          if (body.status === 'failed') { throw body.error }
+          if (typeof body.redirect === 'string') { window.location = body.redirect }
+          return null
+        })
+        .then(() => {
+          this.setState({
+            submitted: true
+          })
+          return null
+        })
+        .catch(err => {
+          this.setState({
+            errorMessage: err,
+            error: true,
+            submitted: false,
+            submitable: false,
+            data: {}
+          })
         })
     } else {
       console.log('some validation required before sending!')

@@ -12,7 +12,6 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var button_generic_1 = require("./button-generic");
 var React = require("react");
-//
 var FormWrapper = /** @class */ (function (_super) {
     __extends(FormWrapper, _super);
     function FormWrapper(props) {
@@ -63,10 +62,8 @@ var FormWrapper = /** @class */ (function (_super) {
     };
     FormWrapper.prototype.handleSubmit = function (event) {
         var _this = this;
-        console.log('HANDLE SUBMIT CALLED:', this.state.data);
         event.preventDefault();
         if (this.state.submitable && this.props.method === 'post') {
-            console.log('state submitted true and this props method is post');
             return fetch(this.props.url, {
                 body: JSON.stringify(this.state.data),
                 method: "post",
@@ -77,17 +74,27 @@ var FormWrapper = /** @class */ (function (_super) {
                 }
             })
                 .then(function (res) { return res.json(); })
-                .then(function (body) { return console.log(body); })
-                .then(function () { return _this.setState({
-                submitted: true
-            }); })
-                .catch(function (error) {
-                console.log(error);
+                .then(function (body) {
+                if (body.status === 'failed') {
+                    throw body.error;
+                }
+                if (typeof body.redirect === 'string') {
+                    window.location = body.redirect;
+                }
+                return null;
+            })
+                .then(function () {
                 _this.setState({
-                    errorMessage: error,
+                    submitted: true
+                });
+                return null;
+            })
+                .catch(function (err) {
+                _this.setState({
+                    errorMessage: err,
+                    error: true,
                     submitted: false,
-                    submitable: false,
-                    data: {}
+                    submitable: false
                 });
             });
         }
@@ -98,6 +105,31 @@ var FormWrapper = /** @class */ (function (_super) {
                     "Content-Type": "application/json",
                     "Accept": "application/json"
                 }
+            })
+                .then(function (res) { return res.json(); })
+                .then(function (body) {
+                if (body.status === 'failed') {
+                    throw body.error;
+                }
+                if (typeof body.redirect === 'string') {
+                    window.location = body.redirect;
+                }
+                return null;
+            })
+                .then(function () {
+                _this.setState({
+                    submitted: true
+                });
+                return null;
+            })
+                .catch(function (err) {
+                _this.setState({
+                    errorMessage: err,
+                    error: true,
+                    submitted: false,
+                    submitable: false,
+                    data: {}
+                });
             });
         }
         else {

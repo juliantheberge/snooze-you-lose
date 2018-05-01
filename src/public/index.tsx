@@ -1,6 +1,6 @@
 import App from './app'
-import NewAccount from './unused/components/new-account';
-import Login from './unused/login'
+import NewAccount from './new-account';
+import Login from './login'
 import { TestApp } from './test'
 import { AlarmClock } from './alarm-clock'
 import { SimpleClock } from './simple-clock'

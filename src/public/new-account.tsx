@@ -1,6 +1,6 @@
-import FormWrapper from './form-wrapper'
-import FormItem from './form-item'
-import Button from './button-generic'
+import FormWrapper from './components/form-wrapper'
+import FormItem from './components/form-item'
+import Button from './components/button-generic'
 
 import * as React from 'react';
 

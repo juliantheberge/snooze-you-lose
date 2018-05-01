@@ -70,7 +70,6 @@ alarms.route('/:alarm_uuid/time')
         })
     })
     .put((req, res) => {
-      console.log('time put running')
       req.AlarmSvc = new AlarmSvc(req.querySvc, req.session.user, req.body)
       req.AlarmSvc.updateAlarmTime()
         .then(alarms => {
@@ -90,7 +89,6 @@ alarms.route('/:alarm_uuid/time')
 
 alarms.route('/:alarm_uuid/time/api')
   .put((req, res) => {
-    console.log('are we even getting here?', req.body)
     req.AlarmSvc = new AlarmSvc(req.querySvc, req.session.user, req.body)
     req.AlarmSvc.updateAlarmTime()
       .then(() => req.AlarmSvc.getUserAlarms())

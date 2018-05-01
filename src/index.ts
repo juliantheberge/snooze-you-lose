@@ -3,15 +3,14 @@ import auth from './routes/guest-authorization';
 import accts from './routes/guest-accounts';
 import appLayout from './middleware/choose-layout';
 import allOrgs from './routes/organizations';
-
 import profile from './routes/user-account'
 import alarms from './routes/user-alarms';
 import orgs from './routes/user-organizations';
 import settings from './routes/user-settings';
 import payment from './routes/user-payment';
-
 import trans from './routes/user-trans'
 
+// REACT AND REDUX
 import alarmsAPI from './routes/user-alarms-api';
 import authAPI from './routes/guest-authorization-api';
 const index = express.Router();

@@ -300,7 +300,7 @@ class TitleForm extends React.Component {
             formStyle: {
                 width:TitleForm.calcWidth(event.target.value.length)
             }
-        }, () => console.log(this.state));
+        });
     }
 
     handleSubmit(event) {
@@ -313,7 +313,6 @@ class TitleForm extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div>
                 {!this.state.form

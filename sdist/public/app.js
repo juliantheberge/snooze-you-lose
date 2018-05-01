@@ -11,19 +11,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-// import { fetchAlarms } from './actions'
 var react_redux_1 = require("react-redux");
 var react_router_dom_1 = require("react-router-dom");
 var alarm_clock_1 = require("./alarm-clock");
-var test_1 = require("./test");
-// import ProfileWithActions from "./containers/profile-actions";
-// import GraphWrapper from "./components/user-graph";
-// import SettingsWithActions from "./containers/settings-actions";
-// import SpaNewAccount from "./new-account"
-// import AlarmsWithActions from "./containers/alarm-actions";
-// import OrgsWithActions from "./containers/organizations-actions";
-// import AlarmClock from './components/alarm-clock';
-// import Orgs from './components/guest-orgs'
 var Spa = /** @class */ (function (_super) {
     __extends(Spa, _super);
     function Spa(props) {
@@ -64,9 +54,6 @@ var Spa = /** @class */ (function (_super) {
                             React.createElement(react_router_dom_1.Link, { to: "/app/accounts/" + this.props.userData.profile.email + "/alarms", className: 'app-menu-text' }, "alarms")),
                         React.createElement("li", { className: 'app-menu-li' },
                             React.createElement("img", { className: 'formIcon fadeIn', src: '/icons/white/squares.svg' }),
-                            React.createElement(react_router_dom_1.Link, { to: "/app/accounts/" + this.props.userData.profile.email + "/orgs", className: 'app-menu-text ' }, "test")),
-                        React.createElement("li", { className: 'app-menu-li' },
-                            React.createElement("img", { className: 'formIcon fadeIn', src: '/icons/white/squares.svg' }),
                             React.createElement("a", { href: "/app/accounts/{{email}}/orgs", className: 'app-menu-text ' }, "organizations")),
                         React.createElement("li", { className: 'app-menu-li' },
                             React.createElement("img", { className: 'formIcon fadeIn', src: '/icons/white/user-fem.svg' }),
@@ -91,10 +78,6 @@ var Spa = /** @class */ (function (_super) {
                                 React.createElement("img", { className: 'formIcon fadeIn', src: '/icons/white/clock-alarm.svg' })),
                             React.createElement("p", { className: "mini-text gray-text" }, "alarm")),
                         React.createElement("li", { className: 'app-menu-li' },
-                            React.createElement(react_router_dom_1.Link, { to: "/app/accounts/" + this.props.userData.profile.email + "/orgs", className: 'app-menu-text ' },
-                                React.createElement("img", { className: 'formIcon fadeIn', src: '/icons/white/squares.svg' })),
-                            React.createElement("p", { className: "mini-text gray-text" }, "test")),
-                        React.createElement("li", { className: 'app-menu-li' },
                             React.createElement("a", { href: "/app/accounts/{{email}}/orgs", className: 'app-menu-text ' },
                                 React.createElement("img", { className: 'formIcon fadeIn', src: '/icons/white/squares.svg' })),
                             React.createElement("p", { className: "mini-text gray-text" }, "orgs")),
@@ -114,8 +97,7 @@ var Spa = /** @class */ (function (_super) {
                             React.createElement("p", { className: "mini-text gray-text" }, "logout"))),
                     React.createElement("div", { className: "app-content" },
                         React.createElement(react_router_dom_1.Route, { path: '/app/account', render: function () { return React.createElement(react_router_dom_1.Redirect, { to: '/app/accounts/' + _this.props.userData.profile.email + '/alarms' }); } }),
-                        React.createElement(react_router_dom_1.Route, { path: '/app/accounts/' + this.props.userData.profile.email + '/alarms', component: alarm_clock_1.AlarmClock }),
-                        React.createElement(react_router_dom_1.Route, { path: '/app/accounts/' + this.props.userData.profile.email + '/orgs', component: test_1.TestApp })))));
+                        React.createElement(react_router_dom_1.Route, { path: '/app/accounts/' + this.props.userData.profile.email + '/alarms', component: alarm_clock_1.AlarmClock })))));
         }
         else {
             React.createElement("h1", null, "something broke");
@@ -124,16 +106,10 @@ var Spa = /** @class */ (function (_super) {
     return Spa;
 }(React.Component));
 var mapStateToProps = function (state) {
-    // console.log('mapping for alarmlist', state)
     return {
         userData: state.userData
     };
 };
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//     return {
-//         updateAlarms: () => dispatch(fetchAlarms())
-//     }
-// }
 var App = react_redux_1.connect(mapStateToProps)(Spa);
 exports.default = App;
 //# sourceMappingURL=app.js.map

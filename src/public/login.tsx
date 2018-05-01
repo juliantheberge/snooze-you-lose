@@ -35,9 +35,6 @@ export default class Login extends React.Component {
               />
           </FormWrapper>
           <div className="flex column userWrapper">
-            {/* <form action="/forgot-password" method="get">
-              <button className="no" type="submit">forgot password</button>
-            </form> */}
           </div>
         </div>
       </div>

@@ -11,21 +11,20 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var app_1 = require("./app");
-var new_account_1 = require("./unused/components/new-account");
-var login_1 = require("./unused/login");
+var new_account_1 = require("./new-account");
+var login_1 = require("./login");
+var React = require("react");
+var redux_thunk_1 = require("redux-thunk");
+var ReactDOM = require("react-dom");
 var test_1 = require("./test");
 var simple_clock_1 = require("./simple-clock");
-var React = require("react");
-var ReactDOM = require("react-dom");
 var react_redux_1 = require("react-redux");
 var redux_devtools_extension_1 = require("redux-devtools-extension");
-var redux_thunk_1 = require("redux-thunk");
 var redux_1 = require("redux");
 var user_data_1 = require("./user-data");
 exports.populate = user_data_1.populate;
 var actions_1 = require("./actions");
 var actions_alarm_1 = require("./actions-alarm");
-// wrap around erroring component 
 var ErrorBoundary = /** @class */ (function (_super) {
     __extends(ErrorBoundary, _super);
     function ErrorBoundary(props) {
@@ -34,13 +33,10 @@ var ErrorBoundary = /** @class */ (function (_super) {
         return _this;
     }
     ErrorBoundary.prototype.componentDidCatch = function (error, info) {
-        // Display fallback UI
         this.setState({ hasError: true });
-        // You can also log the error to an error reporting service
     };
     ErrorBoundary.prototype.render = function () {
         if (this.state.hasError) {
-            // You can render any custom fallback UI
             return React.createElement("h1", null, "Something went wrong.");
         }
         return this.props.children;

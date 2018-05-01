@@ -70,7 +70,7 @@ app.use(errors)
 // app.listen(8000, '172.31.31.153')
 
 // localhost
-app.listen(3000, 'localhost')
+app.listen(3000, 'localhost', () => console.log('app running'))
 
 // // easy switch to https
 // http.createServer({

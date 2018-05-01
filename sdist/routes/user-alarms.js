@@ -59,7 +59,6 @@ alarms.route('/:alarm_uuid/time')
     });
 })
     .put(function (req, res) {
-    console.log('time put running');
     req.AlarmSvc = new logic_alarms_1.default(req.querySvc, req.session.user, req.body);
     req.AlarmSvc.updateAlarmTime()
         .then(function (alarms) {
@@ -78,7 +77,6 @@ alarms.route('/:alarm_uuid/time')
 // !! TRYING NOT TO USE
 alarms.route('/:alarm_uuid/time/api')
     .put(function (req, res) {
-    console.log('are we even getting here?', req.body);
     req.AlarmSvc = new logic_alarms_1.default(req.querySvc, req.session.user, req.body);
     req.AlarmSvc.updateAlarmTime()
         .then(function () { return req.AlarmSvc.getUserAlarms(); })

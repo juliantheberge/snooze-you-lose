@@ -8,98 +8,9 @@
     <link rel = "stylesheet" href="/stylesheets/styles.css" />
     <script src = '/bundle.js'></script>
     <script>
+        console.log('this is teh user', {{{stringUser}}})
         a.store.dispatch(a.populate({{{ stringUser }}}))
     </script>
-
-    {{!-- <form action='/push-test' method='POST'>
-        <button>send test notification</button>
-    </form> --}}
-
-    <script>
-        function askPermission() {
-            return new Promise(function (resolve, reject) {
-                const permissionResult = Notification.requestPermission(function (result) {
-                    resolve(result);
-                });
-
-                if (permissionResult) {
-                    permissionResult.then(resolve, reject);
-                }
-            })
-                .then(function (permissionResult) {
-                    if (permissionResult !== 'granted') {
-                        throw new Error('We weren\'t granted permission.');
-                    }
-                });
-        }
-
-        function urlBase64ToUint8Array(base64String) {
-            const padding = '='.repeat((4 - base64String.length % 4) % 4);
-            const base64 = (base64String + padding)
-                .replace(/\-/g, '+')
-                .replace(/_/g, '/');
-
-            const rawData = window.atob(base64);
-            const outputArray = new Uint8Array(rawData.length);
-
-            for (let i = 0; i < rawData.length; ++i) {
-                outputArray[i] = rawData.charCodeAt(i);
-            }
-            return outputArray;
-        }
-
-
-
-        function subscribeUserToPush() {
-            return navigator.serviceWorker.register('/doWork.js')
-                .then(function (registration) {
-                    const subscribeOptions = {
-                        userVisibleOnly: true,
-                        applicationServerKey: urlBase64ToUint8Array(
-                            'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U'
-                        )
-                    };
-
-                    return registration.pushManager.subscribe(subscribeOptions);
-                })
-                .then(function (pushSubscription) {
-                    return sendSubscriptionToBackEnd(pushSubscription)
-                })
-
-        }
-
-        function sendSubscriptionToBackEnd(subscription) {
-            return fetch('/subscribe', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(subscription)
-            })
-                .then(function (response) {
-                    if (!response.ok) {
-                        console.log(response)
-                        throw new Error('Bad status code from server.', response);
-                    }
-
-                    return response.json();
-                })
-                .then(function (responseData) {
-                    if (!(responseData.data && responseData.data.success)) {
-                        console.log(responseData)
-                        throw new Error('Bad response from server.');
-                    }
-                })
-                .catch(e => console.log(e))
-        }
-
-        askPermission()
-        subscribeUserToPush()
-
-
-    </script>
-
 </head>
 
 <body>

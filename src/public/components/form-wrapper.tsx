@@ -41,7 +41,7 @@ class FormWrapper extends React.Component {
   getValidation(arr) {
     for (let k in this.testObj) {
       if (k === arr[0]) {
-        console.log(arr[0], 'is already in array')
+        null
       }
     }
     let obj = this.testObj;
@@ -51,7 +51,7 @@ class FormWrapper extends React.Component {
       submitable:bool
     })
   }
-  // CHANGE DATA SENDING TO OBJ RATHER THAN ARRAY
+
   getData = (dataFromChild) => {
     let data = this.state.data
     let title = dataFromChild[0]
@@ -133,10 +133,8 @@ class FormWrapper extends React.Component {
             data: {}
           })
         })
-    } else {
-      console.log('some validation required before sending!')
-    }
-    this.props.noValidation ? console.log('no validation req') : event.preventDefault();
+    } 
+    this.props.noValidation ? null : event.preventDefault();
   }
 
   skipValidation() {
@@ -146,13 +144,11 @@ class FormWrapper extends React.Component {
   }
 
   componentDidMount() {
-    this.props.noValidation ? this.skipValidation() : console.log('validation required');
+    this.props.noValidation ? this.skipValidation() : null;
   }
 
   render() {
-    console.log('CHILDREN', this.props.children)
     const childWithProp = React.Children.map(this.props.children, (child) => {
-      console.log(child)
       return React.cloneElement(child, {
           sendData: this.getData,
           submitted: this.state.submitted
@@ -172,8 +168,6 @@ class FormWrapper extends React.Component {
             submitted = {this.state.submitted}
             onClick = {this.handleSubmit}
             buttonText = {this.props.buttonText}
-            // type = 'submit'
-            // value = 'login'
             />
         </form>
         <div>

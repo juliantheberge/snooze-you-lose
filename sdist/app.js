@@ -52,10 +52,10 @@ var alarmTrigger = new alarm_trigger_1.default(db_connect_config_1.dbConfig);
 alarmTrigger.start();
 // ERROR STUFF
 app.use(errors_1.default);
-// production
+// AWS HOSTING
 // app.listen(8000, '172.31.31.153')
 // localhost
-app.listen(3000, 'localhost');
+app.listen(3000, 'localhost', function () { return console.log('app running'); });
 // // easy switch to https
 // http.createServer({
 //    key: fs.readFileSync('key.pem'),

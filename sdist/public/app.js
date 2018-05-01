@@ -16,14 +16,6 @@ var react_redux_1 = require("react-redux");
 var react_router_dom_1 = require("react-router-dom");
 var alarm_clock_1 = require("./alarm-clock");
 var test_1 = require("./test");
-// import ProfileWithActions from "./containers/profile-actions";
-// import GraphWrapper from "./components/user-graph";
-// import SettingsWithActions from "./containers/settings-actions";
-// import SpaNewAccount from "./new-account"
-// import AlarmsWithActions from "./containers/alarm-actions";
-// import OrgsWithActions from "./containers/organizations-actions";
-// import AlarmClock from './components/alarm-clock';
-// import Orgs from './components/guest-orgs'
 var Spa = /** @class */ (function (_super) {
     __extends(Spa, _super);
     function Spa(props) {

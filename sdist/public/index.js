@@ -11,8 +11,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var app_1 = require("./app");
-var new_account_1 = require("./unused/components/new-account");
-var login_1 = require("./unused/login");
+var new_account_1 = require("./new-account");
+var login_1 = require("./login");
 var test_1 = require("./test");
 var simple_clock_1 = require("./simple-clock");
 var React = require("react");

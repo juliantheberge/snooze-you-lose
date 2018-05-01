@@ -2,7 +2,6 @@ import * as V from '../services/validation';
 import * as R from '../services/value-objects';
 import * as pg from 'pg';
 
-import * as accounts from './queries-accounts';
 import { AnalysisOptions } from 'aws-sdk/clients/cloudsearch';
  
 export default class QuerySvc {
@@ -347,11 +346,9 @@ export default class QuerySvc {
 
   // SHOULD I BE DEFINING A SPECIAL TYPE FOR THIS ARRAY?
   insertTransaction(values:any[]): Promise<any> {
-    console.log('insert transaction started')
     const text = 'INSERT INTO transactions(user_uuid, recipient, payment_uuid, snoozes, dismisses, wakes, total) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *'
     return this.conn.query(text, values)
       .then(result => {
-        console.log(result)
         return result.rows[0]
       })
   }
@@ -375,7 +372,6 @@ export default class QuerySvc {
     const text = 'INSERT INTO user_orgs(user_uuid, org_uuid) VALUES ($1, $2) RETURNING *'
     return this.conn.query(text, values)
       .then(result => {
-        console.log('insert user orgs active', result.rows[0].active)
         return result.rows[0].active
       })
   }

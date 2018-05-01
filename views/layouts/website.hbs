@@ -9,9 +9,7 @@
     <script src = '/bundle.js'></script>
     <script>
         let loggedIn = '{{stringUser}}'
-        if (loggedIn !== '') {
-            a.store.dispatch(a.populate({{{ stringUser }}}))
-        }
+        if (loggedIn !== '') {a.store.dispatch(a.populate({{{ stringUser }}}))}
     </script>
 </head>
 <body>

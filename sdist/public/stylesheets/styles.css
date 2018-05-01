@@ -833,6 +833,11 @@ button:focus {
   font-size: 8vw;
   font-weight: 400; }
 
+@media all and (max-width: 750px) {
+  .clock > h1 {
+    font-size: 18vw;
+    font-weight: 300; } }
+
 .week-wrapper {
   display: flex;
   max-width: 30vw;

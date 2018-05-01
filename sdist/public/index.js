@@ -77,7 +77,6 @@ function userDataReducer(state, action) {
         case actions_alarm_1.REQ_ACTIVE_TOGGLE:
             return Object.assign({}, state, { isFetching: true });
         case actions_alarm_1.RES_ACTIVE_TOGGLE:
-            console.log('res active toggle', action);
             return Object.assign({}, state, {
                 isFetching: false,
                 alarms: action.alarms
@@ -97,7 +96,6 @@ function userDataReducer(state, action) {
                 alarms: action.alarms
             });
         case actions_1.GEN_ERR:
-            console.log('gen error', action);
             return Object.assign({}, state, {
                 isFetching: false,
                 error: action.error,

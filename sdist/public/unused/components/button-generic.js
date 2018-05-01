@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 function Button(props) {
-    var currentClass = 'yes';
+    var currentClass = 'button dark-button';
     if (!props.submitable) {
-        currentClass = 'buttonInactive';
+        currentClass = 'button un-button';
     }
     if (props.submitted) {
-        currentClass = 'buttonSuccess';
+        currentClass = 'button success-button';
     }
     return (React.createElement("button", { className: currentClass }, props.buttonText));
 }

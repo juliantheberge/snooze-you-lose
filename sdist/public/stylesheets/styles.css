@@ -90,12 +90,12 @@ body {
 .none {
   display: none; }
 
-.one-item-spacing, .big-form-item, .userFormItem, .light-button, .dark-button, .search-wrapper, .top-row-time, .org-description, .test-error, .formErrorReport {
+.one-item-spacing, .big-form-item, .userFormItem, .light-button, .dark-button, .un-button, .success-button, .search-wrapper, .top-row-time, .org-description, .test-error, .formErrorReport {
   padding: .4vw;
   margin: .3vw; }
 
 @media all and (max-width: 750px) {
-  .one-item-spacing, .big-form-item, .userFormItem, .light-button, .dark-button, .search-wrapper, .top-row-time, .org-description, .test-error, .formErrorReport {
+  .one-item-spacing, .big-form-item, .userFormItem, .light-button, .dark-button, .un-button, .success-button, .search-wrapper, .top-row-time, .org-description, .test-error, .formErrorReport {
     padding: 5px;
     margin: 3px; } }
 
@@ -220,6 +220,26 @@ button:focus {
 .dark-button:hover {
   background-color: #756F6F;
   transition: 200ms; }
+
+.un-button {
+  background-color: #756F6F;
+  color: lightGrey;
+  border-radius: 4px;
+  border-bottom: 1px solid transparent;
+  transition: 200ms;
+  align-self: center; }
+
+.un-button:active {
+  transform: none; }
+
+.success-button {
+  border-radius: 4px;
+  transition: 200ms;
+  align-self: center;
+  background-color: #068721;
+  border-bottom: 1px solid transparent;
+  border-color: #068721;
+  color: #fff; }
 
 .full-page {
   width: 80vw;

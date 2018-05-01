@@ -2,12 +2,12 @@ import * as React from 'react';
 
 export default function Button(props) {
 
-  let currentClass = 'yes'
+  let currentClass = 'button dark-button'
   if (!props.submitable) {
-    currentClass = 'buttonInactive'
+    currentClass = 'button un-button'
   }
   if (props.submitted) {
-      currentClass = 'buttonSuccess'
+      currentClass = 'button success-button'
   }
   return (
       <button className = {currentClass}>

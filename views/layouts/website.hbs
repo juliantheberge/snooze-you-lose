@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/stylesheets/styles.css" />
     <script src = '/bundle.js'></script>
     <script>
-        a.store.dispatch(a.populate({{{ stringUser }}}))
+        let loggedIn = '{{stringUser}}'
+        if (loggedIn !== '') {a.store.dispatch(a.populate({{{ stringUser }}}))}
     </script>
 </head>
 <body>

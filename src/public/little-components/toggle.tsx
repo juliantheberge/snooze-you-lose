@@ -21,7 +21,6 @@ export class Toggler extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        console.log(this.props.alarm.active)
         this.props.toggleActive({
             active:this.props.alarm.active,
             alarm_uuid: this.props.alarm.alarm_uuid

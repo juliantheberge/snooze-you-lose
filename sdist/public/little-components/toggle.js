@@ -20,7 +20,6 @@ var Toggler = /** @class */ (function (_super) {
     }
     Toggler.prototype.handleSubmit = function (e) {
         e.preventDefault();
-        console.log(this.props.alarm.active);
         this.props.toggleActive({
             active: this.props.alarm.active,
             alarm_uuid: this.props.alarm.alarm_uuid

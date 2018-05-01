@@ -18,7 +18,6 @@ import sessionCheck from "./middleware/session-check";
 
 
 const app = express();
-
 app.use(express.static(path.join(__dirname, './public/rollup')));
 
 app.use(methodOverride('_method'))
@@ -67,11 +66,11 @@ alarmTrigger.start()
 
 app.use(errors)
 
-// production
+// AWS HOSTING
 // app.listen(8000, '172.31.31.153')
 
 // localhost
-app.listen(3000, 'localhost')
+app.listen(3000, 'localhost', () => console.log('app running'))
 
 // // easy switch to https
 // http.createServer({

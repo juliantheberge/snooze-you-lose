@@ -319,11 +319,9 @@ var QuerySvc = /** @class */ (function () {
     };
     // SHOULD I BE DEFINING A SPECIAL TYPE FOR THIS ARRAY?
     QuerySvc.prototype.insertTransaction = function (values) {
-        console.log('insert transaction started');
         var text = 'INSERT INTO transactions(user_uuid, recipient, payment_uuid, snoozes, dismisses, wakes, total) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *';
         return this.conn.query(text, values)
             .then(function (result) {
-            console.log(result);
             return result.rows[0];
         });
     };
@@ -344,7 +342,6 @@ var QuerySvc = /** @class */ (function () {
         var text = 'INSERT INTO user_orgs(user_uuid, org_uuid) VALUES ($1, $2) RETURNING *';
         return this.conn.query(text, values)
             .then(function (result) {
-            console.log('insert user orgs active', result.rows[0].active);
             return result.rows[0].active;
         });
     };

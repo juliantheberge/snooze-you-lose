@@ -194,13 +194,12 @@ var TitleForm = /** @class */ (function (_super) {
         }
     };
     TitleForm.prototype.handleChange = function (event) {
-        var _this = this;
         this.setState({
             value: event.target.value,
             formStyle: {
                 width: TitleForm.calcWidth(event.target.value.length)
             }
-        }, function () { return console.log(_this.state); });
+        });
     };
     TitleForm.prototype.handleSubmit = function (event) {
         event.preventDefault();
@@ -210,7 +209,6 @@ var TitleForm = /** @class */ (function (_super) {
         }); // is this the only difference?    
     };
     TitleForm.prototype.render = function () {
-        console.log(this.state);
         return (React.createElement("div", null, !this.state.form
             ?
                 React.createElement("div", { onClick: this.onBlur },

@@ -16,7 +16,6 @@ var FormWrapper = /** @class */ (function (_super) {
     __extends(FormWrapper, _super);
     function FormWrapper(props) {
         var _this = _super.call(this, props) || this;
-        // CHANGE DATA SENDING TO OBJ RATHER THAN ARRAY
         _this.getData = function (dataFromChild) {
             var data = _this.state.data;
             var title = dataFromChild[0];
@@ -42,7 +41,7 @@ var FormWrapper = /** @class */ (function (_super) {
     FormWrapper.prototype.getValidation = function (arr) {
         for (var k in this.testObj) {
             if (k === arr[0]) {
-                console.log(arr[0], 'is already in array');
+                null;
             }
         }
         var obj = this.testObj;
@@ -132,10 +131,7 @@ var FormWrapper = /** @class */ (function (_super) {
                 });
             });
         }
-        else {
-            console.log('some validation required before sending!');
-        }
-        this.props.noValidation ? console.log('no validation req') : event.preventDefault();
+        this.props.noValidation ? null : event.preventDefault();
     };
     FormWrapper.prototype.skipValidation = function () {
         this.setState({
@@ -143,13 +139,11 @@ var FormWrapper = /** @class */ (function (_super) {
         });
     };
     FormWrapper.prototype.componentDidMount = function () {
-        this.props.noValidation ? this.skipValidation() : console.log('validation required');
+        this.props.noValidation ? this.skipValidation() : null;
     };
     FormWrapper.prototype.render = function () {
         var _this = this;
-        console.log('CHILDREN', this.props.children);
         var childWithProp = React.Children.map(this.props.children, function (child) {
-            console.log(child);
             return React.cloneElement(child, {
                 sendData: _this.getData,
                 submitted: _this.state.submitted

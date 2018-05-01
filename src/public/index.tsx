@@ -1,15 +1,15 @@
 import App from './app'
 import NewAccount from './new-account';
 import Login from './login'
+import * as wp from 'web-push';
+import * as React from 'react';
+import thunkMiddleware from 'redux-thunk';
+import * as ReactDOM from 'react-dom';
 import { TestApp } from './test'
 import { AlarmClock } from './alarm-clock'
 import { SimpleClock } from './simple-clock'
-import * as wp from 'web-push';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import thunkMiddleware from 'redux-thunk';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { POPULATE, populate } from './user-data';
 import { 
@@ -33,7 +33,6 @@ import {
 import { WSAEPFNOSUPPORT } from 'constants';
 
 
-// wrap around erroring component 
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -41,14 +40,11 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    // Display fallback UI
     this.setState({ hasError: true });
-    // You can also log the error to an error reporting service
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
       return <h1>Something went wrong.</h1>;
     }
     return this.props.children;
@@ -89,7 +85,6 @@ function userDataReducer(state = initialState, action) {
         case REQ_ACTIVE_TOGGLE:
             return Object.assign({}, state, {isFetching : true})
         case RES_ACTIVE_TOGGLE:
-            console.log('res active toggle', action)
             return Object.assign({}, state, {
                 isFetching:false,
                 alarms:action.alarms
@@ -110,7 +105,6 @@ function userDataReducer(state = initialState, action) {
                 alarms: action.alarms
             })
         case GEN_ERR:
-            console.log('gen error', action)
             return Object.assign({}, state, {
                 isFetching: false,
                 error: action.error,

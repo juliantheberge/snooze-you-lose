@@ -19,7 +19,7 @@ module.exports = {
     },
     plugins: [
       replace({
-        'process.env.NODE_ENV': JSON.stringify( 'development' )
+        'process.env.NODE_ENV': JSON.stringify( 'production' )
       }),
       typescript(),
       resolve({

@@ -5,19 +5,15 @@ function cardinalityGuess(password) {
     var lowerCase = /[a-z]/, upperCase = /[A-Z]/, numbers = /\d/, symbols = /[`~!@#$%^&*()\-_=+\[\]\\\{\};"':,<\.>\/?|]/;
     if (password.match(lowerCase)) {
         cardinality = cardinality + 26;
-        console.log('positive lowercase search', 'cardinality', cardinality);
     }
     if (password.match(upperCase)) {
         cardinality = cardinality + 26;
-        console.log('positive uppercase search', 'cardinality', cardinality);
     }
     if (password.match(numbers)) {
         cardinality = cardinality + 10;
-        console.log('positive number search', 'cardinality', cardinality);
     }
     if (password.match(symbols)) {
         cardinality = cardinality + 33;
-        console.log('positive symbol search', 'cardinality', cardinality, password.search(symbols));
     }
     return cardinality;
 }

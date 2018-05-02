@@ -338,10 +338,10 @@ ALTER TABLE alarms ADD COLUMN sun BOOLEAN DEFAULT false;
 -- need somewhere to store price history per user
 
 
-INSERT INTO orgs (org_sku, name, description, cause) VALUES ('UNIC-L-INTD-8168', 'United Nations Childrens Fund', 'UNICEF works in 190 countries and territories to save children’s lives, to defend their rights, and to help them fulfil their potential. And we never give up. UNICEF for every child.', 'international relief and development');
-INSERT INTO orgs (org_sku, name, description, cause) VALUES ('MOMA-M-LIT0-6485', 'Museum of Modern Art', 'At The Museum of Modern Art and MoMA PS1, we celebrate creativity, openness, tolerance, and generosity. We aim to be inclusive places—both onsite and online—where diverse cultural, artistic, social, and political positions are welcome. We’re committed to sharing the most thought-provoking modern and contemporary art, and hope you will join us in exploring the art, ideas, and issues of our time.',
-  'literacy');
-INSERT INTO orgs (org_sku, name, description, cause) VALUES ('RNC0-M-POL0-8645', 'Republican National Committee', 'We believe that our: Country is exceptional, Constitution should be honored, valued, and upheld, Leaders should serve people, not special interests, Families and communities should be strong and free from government intrusion, Institution of traditional marriage is the foundation of society, Government should be smaller, smarter and more efficient, Health care decisions should be made by us and our doctors, Paychecks should not be wasted on poorly run government programs and more...', 'literacy');
+INSERT INTO orgs (org_sku, name, description, cause, img) VALUES ('UNIC-L-INTD-8168', 'United Nations Childrens Fund', 'UNICEF works in 190 countries and territories to save children’s lives, to defend their rights, and to help them fulfil their potential. And we never give up. UNICEF for every child.', 'international relief and development', 'planned-parenthood');
+INSERT INTO orgs (org_sku, name, description, cause, img) VALUES ('MOMA-M-LIT0-6485', 'Museum of Modern Art', 'At The Museum of Modern Art and MoMA PS1, we celebrate creativity, openness, tolerance, and generosity. We aim to be inclusive places—both onsite and online—where diverse cultural, artistic, social, and political positions are welcome. We’re committed to sharing the most thought-provoking modern and contemporary art, and hope you will join us in exploring the art, ideas, and issues of our time.',
+  'literacy', 'heffer-international');
+INSERT INTO orgs (org_sku, name, description, cause, img) VALUES ('RNC0-M-POL0-8645', 'Republican National Committee', 'We believe that our: Country is exceptional, Constitution should be honored, valued, and upheld, Leaders should serve people, not special interests, Families and communities should be strong and free from government intrusion, Institution of traditional marriage is the foundation of society, Government should be smaller, smarter and more efficient, Health care decisions should be made by us and our doctors, Paychecks should not be wasted on poorly run government programs and more...', 'literacy', 'nra');
 
 
 ALTER TABLE alarms ADD COLUMN repeate BOOLEAN DEFAULT false;
@@ -440,7 +440,7 @@ ALTER TABLE alarms ADD COLUMN archive BOOLEAN NOT NULL default false;
 ALTER TABLE alarms DROP COLUMN triggered;
 ALTER TABLE alarms ADD COLUMN snooze_tally numeric(10,2) NOT NULL DEFAULT 0;
 
-ALTER TABLE user_settings ADD COLUMN queit_after numeric(10,2) NOT NULL DEFAULT 60; --60 seconds for production
+ALTER TABLE user_settings ADD COLUMN quiet_after numeric(10,2) NOT NULL DEFAULT 60; --60 seconds for production
 ALTER TABLE user_settings ADD COLUMN snooze_length numeric(10,2) NOT NULL DEFAULT 30; --30 seconds for production
 
 ALTER TABLE payment_credit ADD COLUMN active BOOLEAN default false;

@@ -1046,6 +1046,10 @@ $mobile-menu-width:45px;
         display:flex;
         flex-direction:column;
       }
+      .app-menu-text:hover {
+        border-bottom:1px solid transparent;
+        transition:0;
+      }
       .logout-wrapper {
         justify-content: center;
       }

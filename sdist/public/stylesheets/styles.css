@@ -762,6 +762,9 @@ button:focus {
       .mob-app-menu .app-menu-li .app-menu-text {
         display: flex;
         flex-direction: column; }
+      .mob-app-menu .app-menu-li .app-menu-text:hover {
+        border-bottom: 1px solid transparent;
+        transition: 0; }
       .mob-app-menu .app-menu-li .logout-wrapper {
         justify-content: center; }
     .mob-app-menu .formIcon {

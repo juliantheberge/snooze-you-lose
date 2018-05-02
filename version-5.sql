@@ -55,7 +55,7 @@ CREATE TRIGGER revenue_update_timestamp
 ALTER TABLE alarms ADD COLUMN triggered boolean default FALSE;
 
 -- reset transaction db changes
-DELETE FROM org_transactions;ß
+DELETE FROM org_transactions;
 DELETE FROM revenue;
 DELETE FROM transactions;
 UPDATE snoozes SET paid = false;

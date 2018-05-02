@@ -273,6 +273,7 @@ CREATE TABLE orgs (
   org_sku varchar(20) UNIQUE NOT NULL, -- CHECK (org_sku ~ '([A-Z\d]{4})-([A-Z]{1})-([A-Z\d]{4})-([\d]{4})')
   name varchar(100) NOT NULL UNIQUE, --CHECK (name ~ '^[A-Za-z\d ]{1,30}$')
   description varchar(500) NOT NULL, --CHECK (description ~ '^[A-Za-z\d ]{1,500}$')
+	img varchar(100) NOT NULL,
   cause varchar(50) NOT NULL, -- CHECK (cause ~ '^[A-Za-z\d ]{1,50}$')
   link varchar(100) NOT NULL default 'https://www.google.com',
   create_timestamp timestamptz NOT NULL DEFAULT now(),

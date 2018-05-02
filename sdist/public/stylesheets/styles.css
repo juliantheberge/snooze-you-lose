@@ -675,12 +675,12 @@ button:focus {
   display: flex; }
 
 .app-menu {
-  width: 18vw;
+  width: 200px;
   height: 100vh;
-  max-width: 200px;
   display: flex;
   flex-direction: column;
-  background-color: #282828; }
+  background-color: #282828;
+  z-index: 10; }
 
 .mob-app-menu {
   width: 45px;
@@ -773,8 +773,12 @@ button:focus {
     display: none; } }
 
 .app-content {
+  height: 100vh;
+  display: flex;
   overflow: scroll;
-  height: 100vh; }
+  flex-direction: column;
+  width: 100%;
+  align-items: center; }
 
 @media all and (max-width: 750px) {
   .app-content {
@@ -994,13 +998,11 @@ button:focus {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 40vw;
-  height: 10vw;
-  min-height: 100px;
+  width: 100vw;
+  height: 70px;
   position: fixed;
   bottom: 5vh;
-  left: 60vw;
-  transform: translateX(-50%);
+  left: 0vw;
   overflow: hidden;
   overflow-y: hidden;
   overflow-x: hidden; }
@@ -1011,12 +1013,11 @@ button:focus {
   align-items: center;
   align-content: center;
   flex-direction: column;
-  width: 80vw;
-  height: 80vh;
+  width: 100vw;
+  height: 95vh;
   position: fixed;
   bottom: 5vh;
-  left: 60vw;
-  transform: translateX(-50%);
+  left: 0vw;
   overflow: hidden;
   overflow-y: hidden;
   overflow-x: hidden; }
@@ -1033,7 +1034,13 @@ button:focus {
   padding: 4px;
   transition: 300ms;
   border-radius: 4px;
+  margin-left: 200px;
+  width: 40vw;
   overflow: hidden; }
+  .add-alarm form {
+    width: 100%; }
+    .add-alarm form input {
+      width: 100%; }
 
 .fixed-center-wrapper {
   display: flex;
@@ -1042,6 +1049,7 @@ button:focus {
   border-radius: 130px;
   background-color: #325872;
   margin: 4px;
+  margin-left: 200px;
   transition: 300ms;
   overflow: hidden;
   box-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.1); }
@@ -1064,18 +1072,11 @@ button:focus {
   box-shadow: none; }
 
 @media all and (max-width: 750px) {
-  .popup-form-pre {
-    width: 40vw;
-    height: 10vh;
-    bottom: 5vh;
-    left: 54.5vw;
-    transform: translateX(-50%); }
-  .popup-form {
-    width: 800vw;
-    height: 80vh;
-    bottom: 5vh;
-    left: 54.5vw;
-    transform: translateX(-50%); } }
+  .fixed-center-wrapper {
+    margin-left: 45px; }
+  .add-alarm {
+    margin-left: 45px;
+    width: 60vw; } }
 
 .special {
   background-color: white;

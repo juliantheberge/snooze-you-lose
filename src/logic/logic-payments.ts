@@ -54,7 +54,6 @@ export default class PaymentsSvc {
                 }
             })
             .then(() => this.querySvc.insertFormOfPayment(this.paymentObjToArray()))
-            .then(() => this.querySvc.insertCardToCart([this.inputs.card_number, this.user.uuid]))
     }
 
     changeActivePayement() {

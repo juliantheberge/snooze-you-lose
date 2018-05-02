@@ -36,8 +36,7 @@ var PaymentsSvc = /** @class */ (function () {
                 return result;
             }
         })
-            .then(function () { return _this.querySvc.insertFormOfPayment(_this.paymentObjToArray()); })
-            .then(function () { return _this.querySvc.insertCardToCart([_this.inputs.card_number, _this.user.uuid]); });
+            .then(function () { return _this.querySvc.insertFormOfPayment(_this.paymentObjToArray()); });
     };
     PaymentsSvc.prototype.changeActivePayement = function () {
         var _this = this;

@@ -42,7 +42,7 @@ export default class AuthSvc {
     }
 
     doAuth() {
-        return this.querySvc.getUserViaEmail([this.inputs.email])
+        return this.querySvc.getUserViaEmail([this.inputs.email.toLowerCase()])
             .then((result) => {
                 this.user = result;
                 return AuthSvc.checkPassword(this.inputs.password, this.user.password)

@@ -33,7 +33,7 @@ var AuthSvc = /** @class */ (function () {
     };
     AuthSvc.prototype.doAuth = function () {
         var _this = this;
-        return this.querySvc.getUserViaEmail([this.inputs.email])
+        return this.querySvc.getUserViaEmail([this.inputs.email.toLowerCase()])
             .then(function (result) {
             _this.user = result;
             return AuthSvc.checkPassword(_this.inputs.password, _this.user.password);

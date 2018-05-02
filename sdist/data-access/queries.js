@@ -124,9 +124,6 @@ var QuerySvc = /** @class */ (function () {
         var text = 'SELECT * FROM alarms WHERE user_uuid = $1';
         return this.conn.query(text, values)
             .then(function (result) {
-            for (var i = 0; i < result.rows.length; i++) {
-                R.AlarmDB.fromJSON(result.rows[i]);
-            }
             return result.rows;
         });
     };
@@ -134,7 +131,6 @@ var QuerySvc = /** @class */ (function () {
         var text = 'SELECT * FROM alarms WHERE alarm_uuid = $1 AND user_uuid = $2';
         return this.conn.query(text, values)
             .then(function (result) {
-            R.AlarmDB.fromJSON(result.rows[0]);
             return result.rows[0];
         });
     };

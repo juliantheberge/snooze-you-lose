@@ -1,12 +1,3 @@
--- INSERT INTO users (email, phone, password) VALUES ('a@a.aa', '1', 'a');
---
--- INSERT INTO payment_credit (card_number, name, exp_month, exp_date, cvv, address_1, city, state, zip) VALUES ('4539 9626 3821 7151', 'JOE', '12', '12', '123', '1234', 'BLAH', 'WA', '12345');
-
--- INSERT INTO cart_items (cart_uuid, product_id) VALUES ('d59ec67c-13a7-4577-8074-8d63280e1a56', 'AAAA-A-AAAA-1111'), ('d59ec67c-13a7-4577-8074-8d63280e1a56', 'BBBB-B-BBBB-2222');
-
--- temp user_uuid ce1ab5fb-897c-43ad-b6a5-4318b830eb4c
--- temp cart_uuid d59ec67c-13a7-4577-8074-8d63280e1a56
-
 CREATE FUNCTION set_updated_timestamp()
   RETURNS TRIGGER
   LANGUAGE plpgsql
@@ -194,9 +185,3 @@ CREATE TRIGGER session_update_timestamp
   BEFORE UPDATE ON session
   FOR EACH ROW EXECUTE
   PROCEDURE set_updated_timestamp();
-
-
-  INSERT INTO cart (user_uuid, card_number) VALUES ('ce1ab5fb-897c-43ad-b6a5-4318b830eb4c', '4539 9626 3821 7151' );
-  INSERT INTO products (product_id, universal_id, price, name, description, size) VALUES ('AAAA-A-AAAA-1111', '123412341234', 1, 'one', 'the one', 's');
-  INSERT INTO products (product_id, universal_id, price, name, description, size) VALUES ('BBBB-B-BBBB-2222', '123412341234', 2, 'two', 'the two', 'm');
-  INSERT INTO products (product_id, universal_id, price, name, description, size) VALUES ('CCCC-C-CCCC-1111', '123412341234', 3, 'three', 'the three', 'l');

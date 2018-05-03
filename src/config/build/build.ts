@@ -15,7 +15,8 @@ function build(dbConnect:string, result:func.Result , cb:Function) {
       if (err) {
         console.log(err);
       } else { // if they do, ask to delete or exit
-        console.log(`stdout: ${stdout}`);
+        console.log(`do tables exist?: ${stdout}`);
+        console.log(stdout)
         if (noTable.test(stdout)) {
           fs.readdir('./database-builds/up', function(err, files) {
             if (err) {
@@ -39,7 +40,7 @@ function build(dbConnect:string, result:func.Result , cb:Function) {
                         } else {
                           console.log(`stdout: ${stdout}`);
                           console.log(`stderr: ${stderr}`);
-                          console.log('tables added to empty database');
+                          console.log('tables added');
                           func.makeJSONfromObj('./sdist/config/connect-config.json', jsonConfig, function(err:string) { // store that information in a JSON
                             if(err) {
                               console.log(err)
@@ -58,7 +59,7 @@ function build(dbConnect:string, result:func.Result , cb:Function) {
             }
           })
         } else {
-          console.log('this is where I should be')
+          console.log('this indicates that there are already tables in the database')
           console.log('successfuly made config JSON')
           func.prompter(obj.deleteTables, function(err:string, result:func.Result) {
             if (err) {

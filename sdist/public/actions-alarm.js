@@ -84,7 +84,6 @@ function recieveNewTime(alarms) {
 function fetchNewTime(v) {
     return function (dispatch) {
         dispatch(reqNewTime(v));
-        console.log(reqNewTime);
         return fetch("/app/accounts/:email/alarms/:alarm_uuid/time/api?_method=PUT", {
             method: "post",
             credentials: 'same-origin',

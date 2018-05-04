@@ -68,7 +68,6 @@ export default class AlarmTrigger {
 
 
     ringing(alarm: R.AlarmDB) {
-        console.log('ringing function called')
         return this.querySvc.getUserSettings([alarm.user_uuid])
             .then(settings => {
                 let ringStart = this.now()
@@ -78,7 +77,7 @@ export default class AlarmTrigger {
                             if (state === 'ringing') {
                                 console.log('ringing, ringing')
                                 console.log('RING COUNTDOWN', (ringStart + Math.floor(settings.quiet_after)) - this.now())
-                                if (ringStart + Math.floor(settings.quiet_after) <= this.now() {
+                                if (ringStart + Math.floor(settings.quiet_after) <= this.now()) {
                                     this.querySvc.updateAlarmState(['pending', alarm.alarm_uuid])
                                         .then(() => this.querySvc.insertDismiss([alarm.alarm_uuid, alarm.user_uuid]))
                                         .then(() => clearInterval(ringer))
@@ -119,7 +118,6 @@ export default class AlarmTrigger {
 
     now() {
         let t = new TimeConverter();
-        console.log(t.timeUTC)
         return t.parse(t.timeUTC)
     }
 

@@ -25,6 +25,7 @@ var user_data_1 = require("./user-data");
 exports.populate = user_data_1.populate;
 var actions_1 = require("./actions");
 var actions_alarm_1 = require("./actions-alarm");
+var time_helpers_1 = require("../services/time-helpers");
 var ErrorBoundary = /** @class */ (function (_super) {
     __extends(ErrorBoundary, _super);
     function ErrorBoundary(props) {
@@ -70,6 +71,7 @@ function userDataReducer(state, action) {
         case actions_alarm_1.REQ_ALARM:
             return Object.assign({}, state, { isFetching: true });
         case actions_alarm_1.RES_ALARM:
+            console.log('running', time_helpers_1.convertAlarmsFromUTC(action.alarms));
             return Object.assign({}, state, {
                 isFetching: false,
                 alarms: action.alarms

@@ -121,7 +121,7 @@ alarmsAPI.get('/new-alarm/api', (req, res) => res.redirect('/app/accounts/' + re
 
 alarmsAPI.route('/:alarm_uuid/time/api')
   .put((req, res) => {
-    req.AlarmSvc = new AlarmSvc(req.querySvc, req.session.user, req.body)
+    req.AlarmSvc = new AlarmSvc(req.querySvc, req.session.user, req.body)//
     req.AlarmSvc.updateAlarmTime()
       .then(() => req.AlarmSvc.getUserAlarms())
       .then(alarms => res.json(alarms))

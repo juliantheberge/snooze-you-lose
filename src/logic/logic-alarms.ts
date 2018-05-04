@@ -60,7 +60,7 @@ export default class AlarmsSvc {
         let helper = new TimeHelpers()
         for (let i = 0; i < sortedAlarms.length; i++) {
             if (sortedAlarms[i].repeat) {
-                sortedAlarms[i].nextAlarm = 'schedule below'
+                sortedAlarms[i].nextAlarm = 'schedule below';
             } else {
                 sortedAlarms[i].nextAlarm = helper.todayOrTomorrow(sortedAlarms[i].time)
             }
@@ -97,7 +97,7 @@ export default class AlarmsSvc {
     }
    
     updateAlarmTime():Promise<void> {
-        return TimeHelpers.isMilitaryTime(this.inputs.time) 
+        return TimeHelpers.isMilitaryTime(this.inputs.time)
             .then(time => {
                 return this.querySvc.updateAlarmTime([time, this.inputs.alarm_uuid, this.user.uuid])
             })

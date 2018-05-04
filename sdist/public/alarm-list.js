@@ -14,6 +14,7 @@ var React = require("react");
 var Transition_1 = require("react-transition-group/Transition");
 var toggle_1 = require("./little-components/toggle");
 var nothing_here_1 = require("./little-components/nothing-here");
+var time_helpers_1 = require("../services/time-helpers");
 var AlarmList = /** @class */ (function (_super) {
     __extends(AlarmList, _super);
     function AlarmList(props) {
@@ -93,9 +94,6 @@ var TimeForm = /** @class */ (function (_super) {
         _this.state = {
             value: _this.props.time,
             form: false,
-            formStyle: {
-                width: '148.25px'
-            },
         };
         _this.handleChange = _this.handleChange.bind(_this);
         _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -128,17 +126,21 @@ var TimeForm = /** @class */ (function (_super) {
         }
     };
     TimeForm.prototype.handleChange = function (event) {
-        var _this = this;
-        this.setState({ value: event.target.value }, function () { return console.log(_this.state.value); });
+        this.setState({ value: event.target.value });
     };
     TimeForm.prototype.handleSubmit = function (event) {
+        var t = new time_helpers_1.TimeConverter();
+        console.log(this.state.value);
+        var value = t.fromUserInput(this.state.value);
+        console.log('v', value);
         event.preventDefault();
         if (this.state.value !== '') {
             this.props.postTime({
                 alarm_uuid: this.props.alarm_uuid,
-                time: this.state.value
-            }); // is this the only difference?    
+                time: t.convert(value, false)
+            });
         }
+        console.log('a', t.convert(value, false));
     };
     TimeForm.prototype.render = function () {
         return (React.createElement("div", null, !this.state.form
@@ -147,7 +149,7 @@ var TimeForm = /** @class */ (function (_super) {
                     React.createElement("p", { className: 'alarm-time link-text' }, this.props.time))
             :
                 React.createElement("form", { ref: this.setWrapperRef, onSubmit: this.handleSubmit, onBlur: this.onBlur },
-                    React.createElement("input", { type: 'time', className: 'link-text-form alarm-time', value: this.state.value, onChange: this.handleChange, style: this.state.formStyle }))));
+                    React.createElement("input", { type: 'text', className: 'link-text-form alarm-time', value: this.state.value, onChange: this.handleChange }))));
     };
     return TimeForm;
 }(React.Component));

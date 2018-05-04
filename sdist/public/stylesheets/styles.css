@@ -168,6 +168,11 @@ input:focus {
 input:placeholder-shown {
   color: black; }
 
+input[type=time] {
+  width: 250px;
+  padding: 0;
+  margin: 0; }
+
 textarea {
   margin: 4px;
   border-top: 2px solid black;

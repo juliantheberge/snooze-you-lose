@@ -154,26 +154,85 @@ var TimeConverter = /** @class */ (function () {
     TimeConverter.prototype.offset = function () {
         return this.time.getTimezoneOffset() * 60;
     };
-    TimeConverter.prototype.tzConvert = function (time, utc) {
-        if (!utc) {
-            return this.parse(time) + this.offset();
+    TimeConverter.prototype.convert = function (time, utc) {
+        console.log('e', time);
+        var offsetTime;
+        utc ? offsetTime = this.parse(time) - (this.offset()) : offsetTime = this.parse(time) + (this.offset());
+        console.log('f', offsetTime);
+        if (offsetTime >= 86400) {
+            console.log('g');
+            return this.toString(offsetTime - 86400);
         }
-        else {
-            return this.parse(time) - this.offset();
+        else if (offsetTime === 0 || offsetTime === 86400) {
+            return this.toString(0);
         }
+        else if (offsetTime <= 0) {
+            console.log('h');
+            return this.toString(86400 + offsetTime);
+        }
+        console.log('i', this.toString(offsetTime));
+        return this.toString(offsetTime);
     };
     TimeConverter.prototype.parse = function (time) {
         return time.split(':').reduce(function (acc, time) { return (60 * acc) + +time; });
     };
     TimeConverter.prototype.toString = function (num) {
         var remainingMin = num % 3600;
-        var roundHr = Math.floor(num / 3600);
+        var roundHr = this.addZero(Math.floor(num / 3600));
         var remainingSec = num % 60;
-        var roundMin = Math.floor(remainingMin / 60);
-        var roundSec = Math.floor(remainingSec);
+        var roundMin = this.addZero(Math.floor(remainingMin / 60));
+        var roundSec = this.addZero(Math.floor(remainingSec));
         return roundHr.toString() + ':' + roundMin.toString() + ':' + roundSec.toString();
+    };
+    TimeConverter.prototype.addTrailingZeros = function (string) {
+        if (string.length === 5) {
+            return string + ':00';
+        }
+        return string;
+    };
+    TimeConverter.prototype.colonEveryTwo = function (string) {
+        var arr = string.split('');
+        var nArr = [];
+        var count = 0;
+        for (var i = 0; i < arr.length; i++) {
+            count++;
+            if (count !== 2 || i === arr.length - 1) {
+                nArr.push(arr[i]);
+            }
+            else {
+                nArr.push(arr[i]);
+                nArr.push(':');
+                count = 0;
+            }
+        }
+        return nArr.join('');
+    };
+    TimeConverter.prototype.fromUserInput = function (str) {
+        var string = str.replace(/:/g, '');
+        if (string.length === 3 || string.length === 5) {
+            return this.addTrailingZeros(this.colonEveryTwo('0' + string));
+        }
+        else if (string.length === 4 || string.length === 6) {
+            return this.addTrailingZeros(this.colonEveryTwo(string));
+        }
+        else {
+            throw ('That time doesn\'t make sense');
+        }
     };
     return TimeConverter;
 }());
 exports.TimeConverter = TimeConverter;
+// a;losdfgjasfal;f
+function convertAlarmsFromUTC(alarms) {
+    console.log('a', alarms);
+    var t = new TimeConverter();
+    for (var i = 0; i < alarms.length; i++) {
+        console.log('b', alarms[i].time);
+        console.log('c', t.convert(alarms[i].time, true));
+        alarms[i].time = t.convert(alarms[i].time, true);
+        console.log('d', alarms);
+    }
+    return alarms;
+}
+exports.convertAlarmsFromUTC = convertAlarmsFromUTC;
 //# sourceMappingURL=time-helpers.js.map

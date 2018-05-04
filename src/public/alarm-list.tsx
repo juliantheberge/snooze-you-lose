@@ -5,6 +5,7 @@ import { Toggler, ArchiveAlarm, } from './little-components/toggle'
 import NothingHere from './little-components/nothing-here'
 import { connect, Provider } from 'react-redux';
 import { fetchNewTime } from './actions-alarm';
+import {TimeConverter} from '../services/time-helpers'
 
 export class AlarmList extends React.Component {
     props: {
@@ -146,9 +147,6 @@ class TimeForm extends React.Component {
     state: {
         value: string;
         form: boolean;
-        formStyle:{
-            width:string;
-        }
     }
     props: {
         postTime: any;
@@ -163,9 +161,6 @@ class TimeForm extends React.Component {
         this.state = {
             value: this.props.time,
             form: false,
-            formStyle: {
-                width: '148.25px'
-            },
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -200,17 +195,22 @@ class TimeForm extends React.Component {
         }
     }   
     handleChange(event) {
-        this.setState({ value: event.target.value }, () => console.log(this.state.value));
+        this.setState({ value: event.target.value });
     }
 
     handleSubmit(event) {
+        let t = new TimeConverter()
+        console.log(this.state.value)
+        let value = t.fromUserInput(this.state.value)
+        console.log('v', value)
         event.preventDefault();
         if (this.state.value !== '') {
             this.props.postTime({
                 alarm_uuid: this.props.alarm_uuid,
-                time: this.state.value
-            }) // is this the only difference?    
-        }        
+                time: t.convert(value, false)
+            })    
+        }
+        console.log('a', t.convert(value,false))
     }
 
     render() {
@@ -221,11 +221,11 @@ class TimeForm extends React.Component {
                 <div onClick={this.onBlur}><p className = 'alarm-time link-text'>{this.props.time}</p></div> 
                 :  
                 <form  ref = {this.setWrapperRef} onSubmit = {this.handleSubmit} onBlur = {this.onBlur}>
-                    <input type='time' 
+                    <input 
+                        type = 'text'
                         className='link-text-form alarm-time' 
                         value = {this.state.value} 
                         onChange={this.handleChange} 
-                        style = {this.state.formStyle}
                         />
                 </form>}
             </div>

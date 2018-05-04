@@ -16,6 +16,7 @@ var actions_1 = require("./actions");
 var actions_alarm_1 = require("./actions-alarm");
 var alarm_list_1 = require("./alarm-list");
 var react_redux_1 = require("react-redux");
+var time_helpers_1 = require("../services/time-helpers");
 var Clock = /** @class */ (function (_super) {
     __extends(Clock, _super);
     //
@@ -190,9 +191,13 @@ var AddAlarmForm = /** @class */ (function (_super) {
     };
     AddAlarmForm.prototype.handleSubmit = function (event) {
         event.preventDefault();
+        var t = new time_helpers_1.TimeConverter();
+        var value = t.fromUserInput(this.state.time);
+        console.log('v', value);
+        console.log('a', t.convert(value, false));
         this.props.postAlarm({
             title: this.state.title,
-            time: this.state.time
+            time: t.convert(value, false)
         });
         this.setState({
             form: false,

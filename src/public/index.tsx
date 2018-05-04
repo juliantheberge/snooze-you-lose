@@ -29,7 +29,8 @@ import {
     REQ_ALARM_ARCHIVE,
     RES_ALARM_ARCHIVE,
     RES_ALARM_TITLE
-} from './actions-alarm'
+} from './actions-alarm';
+import { convertAlarmsFromUTC } from '../services/time-helpers'
 import { WSAEPFNOSUPPORT } from 'constants';
 
 
@@ -52,7 +53,6 @@ class ErrorBoundary extends React.Component {
 }
 
 let initialState = {}
-
 function userDataReducer(state = initialState, action) {
     switch (action.type) {
         case POPULATE:
@@ -78,9 +78,10 @@ function userDataReducer(state = initialState, action) {
         case REQ_ALARM:
             return Object.assign({}, state, { isFetching: true })
         case RES_ALARM:
+            console.log('running', convertAlarmsFromUTC(action.alarms))
             return Object.assign({}, state, {
                 isFetching: false,
-                alarms: action.alarms                
+                alarms: action.alarms
             })
         case REQ_ACTIVE_TOGGLE:
             return Object.assign({}, state, {isFetching : true})

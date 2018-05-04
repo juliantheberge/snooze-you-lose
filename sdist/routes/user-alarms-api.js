@@ -98,7 +98,7 @@ alarmsAPI.get('/new-alarm/api', function (req, res) { return res.redirect('/app/
 // CHANGE TIME
 alarmsAPI.route('/:alarm_uuid/time/api')
     .put(function (req, res) {
-    req.AlarmSvc = new logic_alarms_1.default(req.querySvc, req.session.user, req.body);
+    req.AlarmSvc = new logic_alarms_1.default(req.querySvc, req.session.user, req.body); //
     req.AlarmSvc.updateAlarmTime()
         .then(function () { return req.AlarmSvc.getUserAlarms(); })
         .then(function (alarms) { return res.json(alarms); })

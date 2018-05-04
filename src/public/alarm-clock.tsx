@@ -11,6 +11,7 @@ import { fetchAlarms,
 import { AlarmList } from './alarm-list'
 import { connect, Provider } from 'react-redux';
 import { eventNames } from 'cluster';
+import { TimeConverter } from '../services/time-helpers'
 
 class Clock extends React.Component {
     state: { 
@@ -275,9 +276,13 @@ class AddAlarmForm extends React.Component {
     handleChange(event) {this.setState({ [event.target.name]: event.target.value })}
     handleSubmit(event) {
         event.preventDefault();
+        let t = new TimeConverter()
+        let value = t.fromUserInput(this.state.time)
+        console.log('v', value)
+        console.log('a', t.convert(value, false))
         this.props.postAlarm({
             title:this.state.title,
-            time:this.state.time
+            time: t.convert(value, false)
         })
         this.setState({
             form:false,

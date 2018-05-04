@@ -60,7 +60,6 @@ var AlarmTrigger = /** @class */ (function () {
     };
     AlarmTrigger.prototype.ringing = function (alarm) {
         var _this = this;
-        console.log('ringing function called');
         return this.querySvc.getUserSettings([alarm.user_uuid])
             .then(function (settings) {
             var ringStart = _this.now();
@@ -113,7 +112,6 @@ var AlarmTrigger = /** @class */ (function () {
     };
     AlarmTrigger.prototype.now = function () {
         var t = new time_helpers_1.TimeConverter();
-        console.log(t.timeUTC);
         return t.parse(t.timeUTC);
     };
     AlarmTrigger.prototype.start = function () {

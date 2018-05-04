@@ -121,4 +121,59 @@ var TimeHelpers = /** @class */ (function () {
     return TimeHelpers;
 }());
 exports.default = TimeHelpers;
+var TimeConverter = /** @class */ (function () {
+    function TimeConverter() {
+        this.time = this.now();
+        this.timeUTC = this.utc();
+        this.timeTZ = this.tz();
+    }
+    TimeConverter.prototype.now = function () {
+        return new Date();
+    };
+    TimeConverter.prototype.addZero = function (i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    };
+    TimeConverter.prototype.utc = function () {
+        var h = this.addZero(this.time.getUTCHours());
+        var m = this.addZero(this.time.getUTCMinutes());
+        var s = this.addZero(this.time.getUTCSeconds());
+        return (h + ":" + m + ":" + s);
+    };
+    TimeConverter.prototype.tz = function () {
+        var h = this.addZero(this.time.getHours());
+        var m = this.addZero(this.time.getMinutes());
+        var s = this.addZero(this.time.getSeconds());
+        return (h + ":" + m + ":" + s);
+    };
+    TimeConverter.prototype.locale = function () {
+        return this.time.toLocaleTimeString('en-US', { hour12: false });
+    };
+    TimeConverter.prototype.offset = function () {
+        return this.time.getTimezoneOffset() * 60;
+    };
+    TimeConverter.prototype.tzConvert = function (time, utc) {
+        if (!utc) {
+            return this.parse(time) + this.offset();
+        }
+        else {
+            return this.parse(time) - this.offset();
+        }
+    };
+    TimeConverter.prototype.parse = function (time) {
+        return time.split(':').reduce(function (acc, time) { return (60 * acc) + +time; });
+    };
+    TimeConverter.prototype.toString = function (num) {
+        var remainingMin = num % 3600;
+        var roundHr = Math.floor(num / 3600);
+        var remainingSec = num % 60;
+        var roundMin = Math.floor(remainingMin / 60);
+        var roundSec = Math.floor(remainingSec);
+        return roundHr.toString() + ':' + roundMin.toString() + ':' + roundSec.toString();
+    };
+    return TimeConverter;
+}());
+exports.TimeConverter = TimeConverter;
 //# sourceMappingURL=time-helpers.js.map

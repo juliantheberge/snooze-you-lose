@@ -65,7 +65,7 @@ function build(dbConnect:string, result:func.Result , cb:Function) {
             if (err) {
               console.log(err)
             } else {
-              func.filesInDir('./database-builds/down', function(err:Error, files:[string]){
+              func.filesInDir('./database-builds/down', function(err:Error, files:[string]){git
                 if (err) {
                   console.log(err)
                   cb(err);

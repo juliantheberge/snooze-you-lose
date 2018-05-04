@@ -200,7 +200,7 @@ class TimeForm extends React.Component {
         }
     }   
     handleChange(event) {
-        this.setState({ value: event.target.value });
+        this.setState({ value: event.target.value }, () => console.log(this.state.value));
     }
 
     handleSubmit(event) {
@@ -221,7 +221,7 @@ class TimeForm extends React.Component {
                 <div onClick={this.onBlur}><p className = 'alarm-time link-text'>{this.props.time}</p></div> 
                 :  
                 <form  ref = {this.setWrapperRef} onSubmit = {this.handleSubmit} onBlur = {this.onBlur}>
-                    <input type='text' 
+                    <input type='time' 
                         className='link-text-form alarm-time' 
                         value = {this.state.value} 
                         onChange={this.handleChange} 

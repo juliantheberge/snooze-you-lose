@@ -128,7 +128,8 @@ var TimeForm = /** @class */ (function (_super) {
         }
     };
     TimeForm.prototype.handleChange = function (event) {
-        this.setState({ value: event.target.value });
+        var _this = this;
+        this.setState({ value: event.target.value }, function () { return console.log(_this.state.value); });
     };
     TimeForm.prototype.handleSubmit = function (event) {
         event.preventDefault();
@@ -146,7 +147,7 @@ var TimeForm = /** @class */ (function (_super) {
                     React.createElement("p", { className: 'alarm-time link-text' }, this.props.time))
             :
                 React.createElement("form", { ref: this.setWrapperRef, onSubmit: this.handleSubmit, onBlur: this.onBlur },
-                    React.createElement("input", { type: 'text', className: 'link-text-form alarm-time', value: this.state.value, onChange: this.handleChange, style: this.state.formStyle }))));
+                    React.createElement("input", { type: 'time', className: 'link-text-form alarm-time', value: this.state.value, onChange: this.handleChange, style: this.state.formStyle }))));
     };
     return TimeForm;
 }(React.Component));

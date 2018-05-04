@@ -8,8 +8,6 @@ var time_helpers_1 = require("../services/time-helpers");
 var AlarmTrigger = /** @class */ (function () {
     function AlarmTrigger(dbInfo) {
         this.dbInfo = dbInfo;
-        this.maxRingTime = 10;
-        this.maxSnoozeTime = 10;
     }
     AlarmTrigger.prototype.init = function () {
         var _this = this;
@@ -30,7 +28,7 @@ var AlarmTrigger = /** @class */ (function () {
         console.log('snoozing function called');
         return this.querySvc.getUserSettings([alarm.user_uuid])
             .then(function (settings) {
-            var snoozeStart = time_helpers_1.default.parseStringTime(_this.now());
+            var snoozeStart = _this.now();
             var snoozer = setInterval(function () {
                 _this.querySvc.getAlarmState([alarm.alarm_uuid])
                     .then(function (state) {
@@ -41,8 +39,8 @@ var AlarmTrigger = /** @class */ (function () {
                     }
                     else if (state === 'snoozing') {
                         console.log('snoozing, snoozing');
-                        console.log('SNOOZE COUNTDOWN', (snoozeStart + Math.floor(settings.snooze_length)) - time_helpers_1.default.parseStringTime(_this.now()));
-                        if (snoozeStart + Math.floor(settings.snooze_length) <= time_helpers_1.default.parseStringTime(_this.now())) {
+                        console.log('SNOOZE COUNTDOWN', (snoozeStart + Math.floor(settings.snooze_length)) - _this.now());
+                        if (snoozeStart + Math.floor(settings.snooze_length) <= _this.now()) {
                             _this.querySvc.updateAlarmState(['ringing', alarm.alarm_uuid]);
                             _this.ringing(alarm);
                             clearInterval(snoozer);
@@ -65,14 +63,14 @@ var AlarmTrigger = /** @class */ (function () {
         console.log('ringing function called');
         return this.querySvc.getUserSettings([alarm.user_uuid])
             .then(function (settings) {
-            var ringStart = time_helpers_1.default.parseStringTime(_this.now());
+            var ringStart = _this.now();
             var ringer = setInterval(function () {
                 _this.querySvc.getAlarmState([alarm.alarm_uuid])
                     .then(function (state) {
                     if (state === 'ringing') {
                         console.log('ringing, ringing');
-                        console.log('RING COUNTDOWN', (ringStart + Math.floor(settings.quiet_after)) - time_helpers_1.default.parseStringTime(_this.now()));
-                        if (ringStart + Math.floor(settings.quiet_after) <= time_helpers_1.default.parseStringTime(_this.now())) {
+                        console.log('RING COUNTDOWN', (ringStart + Math.floor(settings.quiet_after)) - _this.now());
+                        if (ringStart + Math.floor(settings.quiet_after) <= _this.now()) {
                             _this.querySvc.updateAlarmState(['pending', alarm.alarm_uuid])
                                 .then(function () { return _this.querySvc.insertDismiss([alarm.alarm_uuid, alarm.user_uuid]); })
                                 .then(function () { return clearInterval(ringer); })
@@ -100,7 +98,7 @@ var AlarmTrigger = /** @class */ (function () {
     AlarmTrigger.prototype.matchTime = function (alarms) {
         var _this = this;
         var _loop_1 = function (i) {
-            var time = time_helpers_1.default.parseStringTime(alarms[i].time), now = time_helpers_1.default.parseStringTime(this_1.now()), alarm = alarms[i];
+            var time = time_helpers_1.default.parseStringTime(alarms[i].time), now = this_1.now(), alarm = alarms[i];
             if (time === now) {
                 console.log('-----STARTS RINGING!!!------');
                 this_1.querySvc.updateAlarmState(['ringing', alarm.alarm_uuid])
@@ -114,8 +112,9 @@ var AlarmTrigger = /** @class */ (function () {
         }
     };
     AlarmTrigger.prototype.now = function () {
-        var date = new Date();
-        return date.toLocaleTimeString('en-Ud', { hour12: false });
+        var t = new time_helpers_1.TimeConverter();
+        console.log(t.timeUTC);
+        return t.parse(t.timeUTC);
     };
     AlarmTrigger.prototype.start = function () {
         var _this = this;

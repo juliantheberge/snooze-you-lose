@@ -122,3 +122,70 @@ export default class TimeHelpers {
         return day;
     }
 }
+
+export class TimeConverter {
+    time:Date;
+    timeUTC:string;
+    timeTZ:string;
+
+    constructor() {
+        this.time = this.now()
+        this.timeUTC = this.utc()
+        this.timeTZ = this.tz()
+    }
+
+    now() {
+        return new Date()
+    }
+
+
+    addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    utc() {
+        let h = this.addZero(this.time.getUTCHours());
+        let m = this.addZero(this.time.getUTCMinutes());
+        let s = this.addZero(this.time.getUTCSeconds());
+        return (h + ":" + m + ":" + s);
+    }
+
+    tz() {
+        let h = this.addZero(this.time.getHours());
+        let m = this.addZero(this.time.getMinutes());
+        let s = this.addZero(this.time.getSeconds());
+        return (h + ":" + m + ":" + s);
+    }
+
+    locale() {
+        return this.time.toLocaleTimeString('en-US', { hour12: false })
+    }
+
+    offset() {
+        return this.time.getTimezoneOffset() * 60
+    }
+
+    tzConvert(time, utc) {
+        if (!utc) {
+            return this.parse(time) + this.offset()
+        } else {
+            return this.parse(time) - this.offset()
+        }
+    }
+
+    parse(time) {
+        return time.split(':').reduce((acc, time) => (60 * acc) + +time)
+    }
+
+    toString(num) {
+        let remainingMin = num % 3600
+        let roundHr = Math.floor(num / 3600)
+        let remainingSec = num % 60
+        let roundMin = Math.floor(remainingMin / 60)
+        let roundSec = Math.floor(remainingSec)
+        return roundHr.toString() + ':' + roundMin.toString() + ':' + roundSec.toString()
+    }
+}

@@ -72,7 +72,6 @@ function build(dbConnect, result, cb) {
                     }
                     else {
                         func.filesInDir('./database-builds/down', function (err, files) {
-                            git;
                             if (err) {
                                 console.log(err);
                                 cb(err);

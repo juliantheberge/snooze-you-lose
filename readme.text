@@ -1,3 +1,19 @@
+SNOOZE YOU LOSE
+Can’t wake up in the morning? What if your laziness donated money to a cause you don’t believe in?
+
+CURRENT FEATURES 
+- account management system
+- functioning server-based alarm
+- alarm settings
+
+TESTING FEATURES
+- payment options
+- organizations to be paid 
+- prices associated with snooze, dismiss and wake events
+
+DEMO
+http://snoozeyoulose.juliantheberge.com/
+
 STEPS TO GET RUNNING LOCALLY
 
 1. $ git clone https://github.com/thelionthatiam/greenlight
@@ -12,7 +28,7 @@ STEPS TO GET RUNNING LOCALLY
 
 WATCH FILES
 
- - server: $ tsc -w
+ - node: $ tsc -w
  - react: $ rollup -cw
  - scss: # npm run watch-css
 

@@ -26,6 +26,10 @@ STEPS TO GET RUNNING LOCALLY
   - it has the correct database connection information
 5. $ npm run start
 
+CURRENT ISSUES
+
+- seems the bcrypt doesn't work the way it used to on M1 architecture
+
 WATCH FILES
 
  - node: $ tsc -w

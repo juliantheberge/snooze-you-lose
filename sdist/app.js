@@ -56,13 +56,3 @@ app.use(errors_1.default);
 // app.listen(8000, '172.31.31.153')
 // localhost
 app.listen(3000, 'localhost', function () { return console.log('app running'); });
-// // easy switch to https
-// http.createServer({
-//    key: fs.readFileSync('key.pem'),
-//    cert: fs.readFileSync('cert.pem'),
-//    passphrase: 'Mapex133'
-//  },
-//   app).listen(3000, function () {
-//    console.log('App running');
-//  });
-//# sourceMappingURL=app.js.map

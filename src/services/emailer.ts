@@ -9,7 +9,7 @@ let transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'this1234567890is1234567890test@gmail.com',
-    pass: 'Mapex133'
+    pass: 'Mapex133' // test password
   }
 });
 

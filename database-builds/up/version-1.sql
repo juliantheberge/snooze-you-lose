@@ -33,7 +33,7 @@ BEGIN
 END;
 $$;
 
-ALTER TABLE users ADD COLUMN create_timestamp timestamptz NOT NULL DEFAULT now()
+ALTER TABLE users ADD COLUMN create_timestamp timestamptz NOT NULL DEFAULT now();
 ALTER TABLE users ADD COLUMN updated_timestamp timestamptz NOT NULL DEFAULT now();
 
 
